@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Facebook.Unity;
 using AssemblyCSharp;
 
 public class CBLoginUI : CBBaseUI {
@@ -26,54 +25,54 @@ public class CBLoginUI : CBBaseUI {
 
 	private void facbookLogin(){
 
-		if (!FB.IsInitialized) {
-			// Initialize the Facebook SDK
-			FB.Init(InitCallback, OnHideUnity);
-		} else {
-			// Already initialized, signal an app activation App Event
-			FB.ActivateApp();
-		}
+//		if (!FB.IsInitialized) {
+//			// Initialize the Facebook SDK
+//			FB.Init(InitCallback, OnHideUnity);
+//		} else {
+//			// Already initialized, signal an app activation App Event
+//			FB.ActivateApp();
+//		}
 	}
 
 	private void InitCallback ()
 	{
-		if (FB.IsInitialized) {
-			// Signal an app activation App Event
-			FB.ActivateApp();
-			// Continue with Facebook SDK
-			// ...
-
-			var perms = new List<string>(){"public_profile", "email", "user_friends"};
-			FB.LogInWithReadPermissions(perms, AuthCallback);
-		} else {
-			Debug.Log("Failed to Initialize the Facebook SDK");
-		}
+//		if (FB.IsInitialized) {
+//			// Signal an app activation App Event
+//			FB.ActivateApp();
+//			// Continue with Facebook SDK
+//			// ...
+//
+//			var perms = new List<string>(){"public_profile", "email", "user_friends"};
+//			FB.LogInWithReadPermissions(perms, AuthCallback);
+//		} else {
+//			Debug.Log("Failed to Initialize the Facebook SDK");
+//		}
 	}
 		
 
-	private void AuthCallback (ILoginResult result) {
-		if (FB.IsLoggedIn) {
-			// AccessToken class will have session details
-			var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
-			// Print current access token's User ID
-			Debug.Log(aToken.UserId);
-			// Print current access token's granted permissions
-			foreach (string perm in aToken.Permissions) {
-				Debug.Log(perm);
-			}
-
-			facebookToken = aToken.TokenString;
-			facebookUserID = aToken.UserId;
-			facebookLogined = true;
-
-			// AuzreAuthentication 을 사용하여 인증 토큰 가져 오기
-			azureAuth = new AzureAuthentication();
-			azureAuth.Login (AzureAuthentication.AuthenticationProvider.Facebook, ServerAddress, facebookToken, Login_success, Login_error);
-
-		} else {
-			Debug.Log("User cancelled login");
-		}
-	}
+//	private void AuthCallback (ILoginResult result) {
+//		if (FB.IsLoggedIn) {
+//			// AccessToken class will have session details
+//			var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
+//			// Print current access token's User ID
+//			Debug.Log(aToken.UserId);
+//			// Print current access token's granted permissions
+//			foreach (string perm in aToken.Permissions) {
+//				Debug.Log(perm);
+//			}
+//
+//			facebookToken = aToken.TokenString;
+//			facebookUserID = aToken.UserId;
+//			facebookLogined = true;
+//
+//			// AuzreAuthentication 을 사용하여 인증 토큰 가져 오기
+//			azureAuth = new AzureAuthentication();
+//			azureAuth.Login (AzureAuthentication.AuthenticationProvider.Facebook, ServerAddress, facebookToken, Login_success, Login_error);
+//
+//		} else {
+//			Debug.Log("User cancelled login");
+//		}
+//	}
 
 	public void Login_success(string id, WWW www){
 		acquireUserToken = true;

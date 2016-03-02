@@ -29,39 +29,11 @@ public class CBMainGUI : CBBaseUI
 	 */
 
 	private void HTTPRequestSend (){
-		var serverEndPoint = ServerAddress + PathString;
 
-		Dictionary<string, string> Header = new Dictionary<string, string> ();
-		Header.Add("Accept-Encoding", "gzip");
-		Header.Add ("Accept", "application/json");
-		Header.Add ("X-ZUMO-VERSION", "ZUMO/2.0 (lang=Managed; os=Windows Store; os_version=--; arch=X86; version=2.0.31217.0)");
-		Header.Add ("X-ZUMO-FEATURES", "AJ");
-		Header.Add ("ZUMO-API-VERSION", "2.0.0");
-		Header.Add ("User-Agent","ZUMO/2.0 (lang=Managed; os=Windows Store; os_version=--; arch=X86; version=2.0.31217.0)");
-		Header.Add ("Content-Type", "application/json");
-
-
-		WWW www = new WWW(serverEndPoint, null, Header);
-		StartCoroutine(WaitForRequest(www));
 	}
 
 	private void HTTPRequestAuthSend(){
-		var serverEndPoint = ServerAddress + PathString;
 
-		Dictionary<string, string> Header = new Dictionary<string, string> ();
-		Header.Add("Accept-Encoding", "gzip");
-		Header.Add ("Accept", "application/json");
-		Header.Add ("X-ZUMO-VERSION", "ZUMO/2.0 (lang=Managed; os=Windows Store; os_version=--; arch=X86; version=2.0.31217.0)");
-		Header.Add ("X-ZUMO-FEATURES", "AJ");
-		Header.Add ("ZUMO-API-VERSION", "2.0.0");
-		Header.Add ("User-Agent","ZUMO/2.0 (lang=Managed; os=Windows Store; os_version=--; arch=X86; version=2.0.31217.0)");
-		Header.Add ("Content-Type", "application/json");
-		if(AzureMobileAppRequestHelper.AuthToken!= null)
-			Header.Add ("x-zumo-auth", AzureMobileAppRequestHelper.AuthToken);
-
-
-		WWW www = new WWW(serverEndPoint, null, Header);
-		StartCoroutine(WaitForRequest(www));
 	}
 
 	private IEnumerator  WaitForRequest(WWW www) {
